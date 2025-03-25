@@ -1,6 +1,6 @@
 
 import React , { useState } from 'react';
-
+  
 
 // Header Stil tanımlamaları
 const headerStyle = {
@@ -17,7 +17,7 @@ const headerStyle = {
 
 function Order() {
     const [pizzaSize, setPizzaSize] = useState('Küçük'); //pizza boyutu için
-    const [extras, setExtras] = useState([]);  //fiyat hesabı için
+    const [extras, setExtras] = useState([]);  //extra malzeme fiyat hesabı için
     const [quantity, setQuantity] = useState(1); //fiyat hesabı için
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);  // Dropdown menüsünün açık olup olmadığını kontrol etmek için state
     const [doughType, setDoughType] = useState('');  // Seçilen hamur tipini tutacak state
@@ -59,16 +59,21 @@ function Order() {
       <p style={{color : "white" }}>Anasayfa- Sipariş Oluştur</p>
     </header>
 
-    <div style ={{textAlign : "left" , margin : "300px"}}>
+    <div style ={{textAlign : "left" , margin : "300px"}}> {/* 2.kısmın sola yaslı olmasını ve kenarlarının boş kalmasını sağlayan kısım */}
     {/* ilk başlık */}
-    <h1>Position Absolute Acı Pizza</h1>
-    <h3>{totalPrice.toFixed(2)} TL</h3>
+    <h1 style ={{fontSize:"20px" , }}>Position Absolute Acı Pizza</h1>
+    <h3>{totalPrice.toFixed(2)} ₺</h3>
     <p>Frontent Dev olarak hala position: absolute kullanıyorsun bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. Küçük bir pizzaya bazen pizzetta denir.</p>
     
-    <div style={{ display: 'flex', gap: '50px' }}>
+    {/* Hamur kalınlığı ve boyut için ortak div */}
+    <div style={{ display: "flex",
+        justifyContent: "space-between", // Butonları ve adet seçiciyi yan yana hizalar
+        alignItems: "center",
+        marginTop: "10px",
+        }}> 
          {/* pizza boyutu */}
-          <h4>Boyut Seç</h4>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '10px'}}>
+          <h4>Boyut Seç</h4>
             {['Küçük', 'Orta', 'Büyük'].map((size) => (
               <label key={size} style={{ margin: '10px , 0', cursor: 'pointer' }}> {/* cursor pointer el simgesi */}
                 <input 
@@ -119,6 +124,8 @@ function Order() {
       </div>
      </div> {/* hamur ve boyut seçiminin kapandığı yer */}
 
+
+
         <div>{/*Ek malzemeler */}
             <h4>Ek Malzemeler</h4>
             <p>En fazla 10 malzeme seçebilirsiniz.5₺</p>
@@ -136,6 +143,8 @@ function Order() {
           </div>
         </div>{/*Ek malzemeler kapanış */}
 
+
+
         <div>{/*Sipariş notu başlangıç */}
           <h4>Sipariş Notu</h4>
           <textarea 
@@ -146,16 +155,74 @@ function Order() {
           ></textarea>
         </div>{/*Sipariş notu kapanış */}
 
+
         <hr />
+
+
              {/* Adet Seçme Alanı */}
-      <div>
+      <div style ={{display: "flex",
+        justifyContent: "space-between", // Butonları ve adet seçiciyi yan yana hizalar
+        alignItems: "center",
+        marginTop: "10px",
+        }}>
         <button style={{ backgroundColor : "#FDC913"}}onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>
           -
         </button>
-        <span>{ quantity }</span>
+        <span >{ quantity }</span>
         <button style={{ backgroundColor : "#FDC913"}} onClick={() => setQuantity((prev) => prev + 1)}>+</button>
+      
+
+            {/* Sipariş toplamı alanı */}
+          
+      <div style={{width: "250px",
+        padding: "15px",
+        borderRadius: "8px",
+        backgroundColor: "#fff",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        textAlign: "left",
+            }}>
+
+      <h3 style={{ marginBottom: "10px",
+        fontSize: "18px",
+        fontWeight: "bold",
+        }}>Sipariş Toplamı</h3>
+      
+      <div style={{display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "8px",
+        fontSize: "16px"}}>
+        <span>Seçimler</span>
+        <span>{extrasPrice.toFixed(2)}₺</span>
       </div>
 
+      <div style={{display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "8px",
+        fontSize: "16px"}}>
+
+        <span style={{fontWeight: "bold",
+        color: "red",
+        }}>Toplam</span>
+        <span style={{fontWeight: "bold",
+        color: "red",
+        }}>{totalPrice.toFixed(2)}₺</span>
+      </div>
+
+      <button style={{width: "100%",
+        padding: "10px",
+        backgroundColor: "#FFD700",
+        color: "#000",
+        fontSize: "16px",
+        fontWeight: "bold",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+        marginTop: "10px",
+        }} onClick={() => alert( )}>
+        SİPARİŞ VER
+      </button>
+      </div>
+    </div>
 
 
     </div>
