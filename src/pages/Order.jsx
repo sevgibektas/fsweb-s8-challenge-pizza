@@ -20,11 +20,11 @@ function Order() {
     const [extras, setExtras] = useState([]);  //extra malzeme fiyat hesabı için
     const [quantity, setQuantity] = useState(1); //fiyat hesabı için
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);  // Dropdown menüsünün açık olup olmadığını kontrol etmek için state
-    const [doughType, setDoughType] = useState('');  // Seçilen hamur tipini tutacak state
+    const [doughType, setDoughType] = useState('Hamur Kalınlığı');  // Seçilen hamur tipini tutacak state
     const [note, setNote] = useState(''); //sipariş notu tutacak state
 
     // Fiyat hesaplama
-  const basePrice = pizzaSize === 'Küçük' ? 50 : pizzaSize === 'Orta' ? 70 : 85;
+  const basePrice = pizzaSize === 'Küçük' ? 85.5 : pizzaSize === 'Orta' ? 100 : 120;
   const extrasPrice = extras.length * 5;
   const totalPrice = (basePrice + extrasPrice) * quantity;
 
@@ -41,13 +41,16 @@ function Order() {
     'Domates', 'Mısır', 'Sucuk', 'Jalepeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'
   ];
 
-  // Fonksiyonlar (Extra malzeme)
   const toggleExtra = (extra) => {
-    setExtras((prevExtras) => 
-      prevExtras.includes(extra) 
-        ? prevExtras.filter((item) => item !== extra) 
-        : [...prevExtras, extra]
-    );
+    // Eğer ekstra zaten seçiliyse, kaldır
+    if (extras.includes(extra)) {
+      setExtras(extras.filter((item) => item !== extra));
+    } else {
+      // Eğer ekstra henüz seçilmediyse ve 10'dan fazla seçim yoksa, ekle
+      if (extras.length < 10) {
+        setExtras([...extras, extra]);
+      }
+    }
   };
 
 
@@ -61,8 +64,16 @@ function Order() {
 
     <div style ={{textAlign : "left" , margin : "300px"}}> {/* 2.kısmın sola yaslı olmasını ve kenarlarının boş kalmasını sağlayan kısım */}
     {/* ilk başlık */}
-    <h1 style ={{fontSize:"20px" , }}>Position Absolute Acı Pizza</h1>
+    <h1 style ={{fontSize:"20px" , marginBottom: '0px'}}>Position Absolute Acı Pizza</h1>
+    
+
+    <div style={{ display: 'flex', alignItems: 'center', gap: '500px' }}>
     <h3>{totalPrice.toFixed(2)} ₺</h3>
+    <span style={{ color: 'gray', fontSize: '14px',  }}>4.9 ★ (200)</span>
+    
+
+
+    </div>
     <p>Frontent Dev olarak hala position: absolute kullanıyorsun bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. Küçük bir pizzaya bazen pizzetta denir.</p>
     
     {/* Hamur kalınlığı ve boyut için ortak div */}
@@ -90,37 +101,13 @@ function Order() {
              {/* hamur kalınlığı */}
           </div>
           <div style={{ marginTop: '20px' }}>
-        <h4>Hamur Seç</h4>
-        <div 
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)} 
-          style={{
-            border: '1px solid #ccc', 
-            padding: '10px', 
-            cursor: 'pointer',
-            width: '200px',
-            textAlign: 'center',
-            backgroundColor: '#fff',
-          }}
-        >
-          {doughType ? doughType : 'Hamur Kalınlığı'}
-        </div>
-
-        {isDropdownOpen && (
-          <div style={{ marginTop: '10px', border: '1px solid #ccc', width: '200px' }}>
-            <div 
-              onClick={() => handleDoughTypeChange('İnce')} 
-              style={{ padding: '10px', cursor: 'pointer', backgroundColor: '#fff' }}
-            >
-              İnce
-            </div>
-            <div 
-              onClick={() => handleDoughTypeChange('Kalın')} 
-              style={{ padding: '10px', cursor: 'pointer', backgroundColor: '#fff' }}
-            >
-              Kalın
-            </div>
-          </div>
-        )}
+          <h4>Hamur Seç</h4>
+        <select value={doughType} onChange={(e) => setDoughType(e.target.value)}>
+          <option value="Hamur Kalınlığı" disabled>Hamur Kalınlığı</option>
+          <option value="İnce">İnce</option>
+          <option value="Kalın">Kalın</option>
+        </select>
+        
       </div>
      </div> {/* hamur ve boyut seçiminin kapandığı yer */}
 
@@ -141,6 +128,10 @@ function Order() {
               </label>
             ))}
           </div>
+          <p style={{ color: 'red' }}>
+        {extras.length < 4 && extras.length > 0 ? "En az 4 malzeme seçmelisiniz." : ""}
+        {extras.length > 10 ? "En fazla 10 malzeme seçebilirsiniz." : ""}
+      </p>
         </div>{/*Ek malzemeler kapanış */}
 
 

@@ -13,10 +13,9 @@ gap: 1rem;
 function NavController() {
   return (
     <Controller>
-        <Link to="/home">Ana Sayfa</Link>
+        <Link to="/anaSayfa">Ana Sayfa</Link>
+        <Link to="/homes">Homes</Link>
         
-        <Link to="/order">Order</Link>
-        <Link to="/success">Success</Link>
     </Controller>
   )
 }

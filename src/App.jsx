@@ -4,17 +4,18 @@ import Order from './pages/Order'
 import Success from './pages/Success'
 import Home from './pages/Home'
 import NavController from './components/NavController'
+import anaSayfa from './pages2/anaSayfa'
+import homes from './pages2/homes.'
 
 function App() {
   return (
     <>
       <Switch>
         <Route path="/" exact>
-          <Redirect to="/order" /> {/* Yönlendirme için Redirect kullanıyoruz */}
+          <Redirect to="/anaSayfa" /> {/* Yönlendirme için Redirect kullanıyoruz */}
         </Route>
-        <Route path="/order" component={Order} />
-        <Route path="/home" component={Home} />
-        <Route path="/success" component={Success} />
+        <Route path="/anaSayfa" component={anaSayfa} />
+        <Route path="/homes" component={homes} />
       </Switch>
       <NavController />
     </>

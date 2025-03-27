@@ -2,7 +2,7 @@ import React from 'react'
 
 const headerStyle = {
     backgroundColor: '#CE2829', // Kırmızı arka plan
-    padding: '200px',
+    padding: '80px',
     textAlign: 'center',
     position: 'fixed',  // Header'ı sabit tutmak için fixed
     top: 0,  // Üst kısma sabitlemek için
