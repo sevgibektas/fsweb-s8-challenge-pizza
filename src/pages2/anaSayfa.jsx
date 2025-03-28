@@ -27,7 +27,7 @@ function anaSayfa() {
 
 <div style={{ display: "flex", justifyContent: "center", gap: "70px", padding: "20px" }}>{/* Hepsini kapsayan div */}
 
-  <div>{/* Teknolojik yem */}
+  <div style={{textAlign:"left"}}>{/* Teknolojik yem */}
   <img src="./images/iteration-2-images/footer/logo-footer.svg" />
   <p style={{ fontSize: "14px", marginTop: "10px" }}> <img style={{ }} src="./images/iteration-2-images/footer/icons/icon-1.png"/> 341 Londonderry Road, <br/> İstanbul Türkiye</p>
   <p style={{ fontSize: "14px", marginTop: "10px" }}> <img style={{ }} src="./images/iteration-2-images/footer/icons/icon-2.png"/> aciktim@teknolojikyemekler.com</p>

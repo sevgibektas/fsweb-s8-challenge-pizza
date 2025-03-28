@@ -1,6 +1,16 @@
 import React from 'react'
 
+
 function homes() {
+
+  const menuStil= {
+    color: " #CE2829", 
+    fontSize: "32px" , 
+    fontWeight: "bold", 
+    fontFamily:"Satisfy", 
+    marginBottom:"5px"
+  };
+
   const containerStyle = {
     width: "100%",
     fontFamily: "Arial, sans-serif"
@@ -19,7 +29,7 @@ function homes() {
 
   const bannerText = {
     position: "absolute",
-    top: "40%",
+    top: "36%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     fontSize: "3rem",
@@ -34,7 +44,7 @@ function homes() {
     fontSize: "1.2rem",
     borderRadius: "30px",
     cursor: "pointer",
-    marginTop: "270px",
+    marginTop: "150px",
     transition: "background-color 0.3s"
   };
 
@@ -57,8 +67,8 @@ function homes() {
     <div style={containerStyle}>
       {/* Banner Section */}
       <div style={bannerStyle}>
-        <img style = {{} }src="./images/iteration-1-images//logo.svg" />
-        <p style={{ fontStyle: "italic", color: "#ffeb3b", margin: "10px" , padding : "10px"}}>fırsatı kaçırma</p>
+        <img style = {{margin:"30px"} }src="./images/iteration-1-images//logo.svg" />
+        <p style={{ fontStyle: "italic", color: "#ffeb3b", margin: ".5px" , padding : ".25px"}}>fırsatı kaçırma</p>
         <div style={bannerText}>KOD ACIKTIRIR <br /> PİZZA, DOYURUR</div>
         <button style={buttonStyle}>Acıktım</button>
       </div>
@@ -75,21 +85,26 @@ function homes() {
 
       <div style={{ display: "flex", justifyContent: "center", gap: "20px", padding: "20px" , alignItems: "center"}}>
         <img style = {{ width: "50%", height: "100%" }} src="./images/iteration-2-images/cta/kart-1.png" />
+      
         <div style={{ display: "flex", flexDirection: "column",gap: "10px" }}>
 
         <div style={{ position: "relative", width: "100%"  }}>
         <p style = {{ position: "absolute",color: "white",fontSize: "30px", fontWeight: "bold",padding: "10px 20px",borderRadius: "10px" }}>Hackatlon <br/> Burger Menü</p>
-        <button style = {{position: "absolute" , borderRadius: "30px" , gap:"30px"}}>Sipariş Ver</button>
+        <button style = {{position: "absolute" , borderRadius: "30px" , gap:"30px", color:"red"}}>Sipariş Ver</button>
         <img style = {{ width: "100%", height: "auto"}} src="./images/iteration-2-images/cta/kart-2.png" />
         
         </div>
-
+        <div style={{ position: "relative", width: "100%"  }}>
+        <p style = {{ position: "absolute",color: "white",fontSize: "30px", fontWeight: "bold",padding: "10px 20px",borderRadius: "10px" }}> Çoooook hızlı  <br/> npm gibi kurye</p>
+        <button style = {{position: "absolute" , borderRadius: "30px" , gap:"30px" , color:"red"}}>Sipariş Ver</button>
         <img style = {{ width: "100%", height: "auto"}} src="./images/iteration-2-images/cta/kart-3.png" />
         </div>
+        </div>
+        
       </div>
 
       <div style={{textAlign: "center", padding: "20px", fontFamily: "Arial, sans-serif"}}>
-        <h2 style={{color: " #CE2829", fontSize: "1.5rem" , fontWeight: "bold", fontStyle:"brushScriptMT", marginBottom:"5px"}}>en çok paketlenen menüler</h2>
+        <h2 style={menuStil}>en çok paketlenen menüler</h2>
         <h1 style={{fontSize:"2rem", fontWeight:"bold",marginBottom:"20px" }}> Acıktıran Kodlara Doyuran Lezzetler</h1>
       </div>
 
@@ -129,7 +144,7 @@ function homes() {
 
         <div style={{ display: "flex", justifyContent: "center", gap: "70px", padding: "20px" }}>{/* Hepsini kapsayan div */}
 
-          <div>{/* Teknolojik yem */}
+          <div style={{textAlign:"left"}}>{/* Teknolojik yem */}
           <img src="./images/iteration-2-images/footer/logo-footer.svg" />
           <p style={{ fontSize: "14px", marginTop: "10px" }}> <img style={{ }} src="./images/iteration-2-images/footer/icons/icon-1.png"/> 341 Londonderry Road, <br/> İstanbul Türkiye</p>
           <p style={{ fontSize: "14px", marginTop: "10px" }}> <img style={{ }} src="./images/iteration-2-images/footer/icons/icon-2.png"/> aciktim@teknolojikyemekler.com</p>
